@@ -21,8 +21,11 @@ remoteConfig:
   fixedURL: https://mcp.posthog.com/mcp
   headers:
     - name: PostHog API Key
-      description: PostHog API key used as a bearer token.
+      description: Shared Flora PostHog API key used as a bearer token.
       key: Authorization
       required: true
       sensitive: true
       prefix: "Bearer "
+      secretBinding:
+        name: obot-mcp-shared-secrets
+        key: posthog-api-key
