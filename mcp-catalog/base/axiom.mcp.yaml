@@ -1,0 +1,21 @@
+name: Axiom
+shortDescription: Query Flora logs and telemetry in Axiom
+description: |
+  Remote Axiom MCP server exposed through Trellis/Obot.
+
+  Use this server for production log and trace investigation, especially the
+  `flora-core` dataset referenced by flora-frontend runbooks and skills.
+
+  Prefer per-user OAuth if supported by the remote Axiom MCP flow so telemetry
+  access follows user permissions.
+
+metadata:
+  categories: Observability, Developer Tools
+  trellis-id: axiom
+
+icon: https://axiom.co/favicon.ico
+repoURL: https://axiom.co/docs/reference/mcp
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.axiom.co/mcp

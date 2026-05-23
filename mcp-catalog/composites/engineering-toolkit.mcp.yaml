@@ -1,0 +1,34 @@
+name: Engineering Toolkit
+shortDescription: Composite engineering toolkit with code, observability, deploy, and issue tools
+description: |
+  Composite MCP server for common engineering workflows.
+
+  This exposes selected engineering tools through one Obot MCP server. Tool names
+  are prefixed by component to avoid collisions and make model tool choice easier
+  to audit.
+
+metadata:
+  categories: Developer Tools
+  trellis-id: engineering-toolkit
+
+runtime: composite
+compositeConfig:
+  componentServers:
+    - catalogEntryID: default-sentry-f0fce749
+      toolPrefix: sentry_
+      toolOverrides: []
+    - catalogEntryID: default-github-391ae5a6
+      toolPrefix: github_
+      toolOverrides: []
+    - catalogEntryID: default-axiom-5963466f
+      toolPrefix: axiom_
+      toolOverrides: []
+    - catalogEntryID: default-vercel-920aa84e
+      toolPrefix: vercel_
+      toolOverrides: []
+    - catalogEntryID: default-posthog-db7c40d9
+      toolPrefix: posthog_
+      toolOverrides: []
+    - catalogEntryID: default-linear-2ad8f8d8
+      toolPrefix: linear_
+      toolOverrides: []

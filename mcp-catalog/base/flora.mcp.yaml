@@ -1,0 +1,20 @@
+name: Flora
+shortDescription: Use Flora's agent/MCP API for Flora projects and generations
+description: |
+  Remote Flora MCP server exposed through Trellis/Obot.
+
+  Use this server for Flora-native project, generation, and agent workflows via
+  the public Flora MCP endpoint documented at developer.flora.ai.
+
+  Authentication is handled by Flora's MCP OAuth flow.
+
+metadata:
+  categories: Productivity, Flora
+  trellis-id: flora
+
+icon: https://developer.flora.ai/flora-og.png
+repoURL: https://developer.flora.ai/mcp/install/other-clients/
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://agents.flora.ai/mcp

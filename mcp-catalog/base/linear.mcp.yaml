@@ -1,0 +1,21 @@
+name: Linear
+shortDescription: Manage Linear issues, projects, comments, and team workflows
+description: |
+  Remote Linear MCP server exposed through Trellis/Obot.
+
+  Use this server for issue triage, ticket creation, project planning, comments,
+  cycles, and Linear documents.
+
+  Authentication is handled by Linear's MCP OAuth flow so actions are scoped to
+  the connected user's Linear permissions.
+
+metadata:
+  categories: Project Management, Developer Tools
+  trellis-id: linear
+
+icon: https://avatars.githubusercontent.com/u/46686594?s=200&v=4
+repoURL: https://linear.app/changelog/2025-05-01-mcp
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.linear.app/mcp

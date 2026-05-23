@@ -1,0 +1,19 @@
+name: Slack
+shortDescription: Search Slack messages, read channels, manage threads, and send messages
+description: |
+  Remote Slack MCP server exposed through Trellis/Obot.
+
+  Use this server for workspace search, channel context, threads, DMs, reactions,
+  canvases, and messages. Authentication is handled by Slack's MCP OAuth flow so
+  access follows the connected user's Slack permissions.
+
+metadata:
+  categories: Communication, Productivity
+  trellis-id: slack
+
+icon: https://img.icons8.com/?size=100&id=4n94I13nDTyw&format=png&color=000000
+repoURL: https://api.slack.com
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.slack.com/mcp

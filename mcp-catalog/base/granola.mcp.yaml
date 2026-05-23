@@ -1,0 +1,21 @@
+name: Granola
+shortDescription: Search and retrieve Granola meeting notes and transcripts
+description: |
+  Remote Granola MCP server exposed through Trellis/Obot.
+
+  Use this server for meeting context, notes, summaries, transcripts, and follow-up
+  extraction from Granola.
+
+  Authentication should remain per-user because meeting notes are personal and
+  sensitive.
+
+metadata:
+  categories: Productivity, Meetings
+  trellis-id: granola
+
+icon: https://www.granola.ai/favicon.ico
+repoURL: https://www.granola.ai/
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.granola.ai/mcp

@@ -1,0 +1,23 @@
+name: Vercel
+shortDescription: Inspect Vercel projects, deployments, build logs, and runtime logs
+description: |
+  Remote Vercel MCP server exposed through Trellis/Obot.
+
+  Use this server for deployment and runtime investigation for Flora frontend.
+  Note that flora-frontend docs say Vercel MCP is useful for non-workflow runtime
+  logs and deployment logs, but workflow-specific failures may still require the
+  Vercel Workflow CLI.
+
+  Authentication should remain per-user OAuth so access follows Vercel team
+  permissions.
+
+metadata:
+  categories: Developer Tools, Deployments
+  trellis-id: vercel
+
+icon: https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico
+repoURL: https://vercel.com/docs/mcp
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.vercel.com

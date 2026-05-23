@@ -1,0 +1,20 @@
+name: Sentry
+shortDescription: Debug Sentry issues, errors, traces, and project telemetry
+description: |
+  Remote Sentry MCP server exposed through Trellis/Obot.
+
+  Use this server for production debugging, issue triage, traces, releases,
+  project metadata, and Sentry-backed investigations.
+
+  Authentication is handled by Sentry's MCP OAuth flow.
+
+metadata:
+  categories: Developer Tools, Observability
+  trellis-id: sentry
+
+icon: https://sentry.io/_assets2/static/favicon.png
+repoURL: https://github.com/getsentry/sentry-mcp
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.sentry.dev/mcp

@@ -1,0 +1,28 @@
+name: PostHog
+shortDescription: Query PostHog product analytics, events, cohorts, and HogQL
+description: |
+  Remote PostHog MCP server exposed through Trellis/Obot.
+
+  Use this server for product analytics, event exploration, funnels, cohorts, and
+  HogQL queries. The flora-frontend data skill expects PostHog access to Flora
+  Alpha / project id 65357 unless a different project is explicitly requested.
+
+  Authentication uses a PostHog API key sent as a bearer token.
+
+metadata:
+  categories: Analytics, Developer Tools
+  trellis-id: posthog
+
+icon: https://posthog.com/favicon.ico
+repoURL: https://posthog.com/docs/model-context-protocol
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.posthog.com/mcp
+  headers:
+    - name: PostHog API Key
+      description: PostHog API key used as a bearer token.
+      key: Authorization
+      required: true
+      sensitive: true
+      prefix: "Bearer "

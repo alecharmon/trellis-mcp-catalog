@@ -1,0 +1,19 @@
+name: Notion
+shortDescription: Search and manage Notion pages, databases, comments, and docs
+description: |
+  Remote Notion MCP server exposed through Trellis/Obot.
+
+  Use this server for docs, specs, project notes, SEO pages, and workspace content.
+  Authentication is handled by Notion OAuth so access follows the connected user's
+  Notion permissions.
+
+metadata:
+  categories: Documentation, Productivity
+  trellis-id: notion
+
+icon: https://avatars.githubusercontent.com/u/4792552?v=4
+repoURL: https://github.com/makenotion/notion-mcp-server
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.notion.com/mcp
