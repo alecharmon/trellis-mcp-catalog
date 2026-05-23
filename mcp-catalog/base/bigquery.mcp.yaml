@@ -1,0 +1,53 @@
+name: BigQuery
+shortDescription: Query Flora BigQuery datasets with shared read-only credentials
+description: |
+  BigQuery MCP server exposed through Trellis/Obot.
+
+  Use this server for authoritative Flora data questions across datasets in the
+  `flora-data` project, including current and future datasets. The default Flora
+  production snapshot dataset is `flora-data.convex_app` in `us-east4`.
+
+  Authentication uses a shared service account JSON key stored in Secret Manager
+  and mounted into the MCP server as a credentials file.
+
+metadata:
+  categories: Data & Analytics, Databases
+  trellis-id: bigquery
+
+icon: https://www.svgrepo.com/show/375551/bigquery.svg
+repoURL: https://github.com/obot-platform/bigquery-mcp
+
+env:
+  - key: GOOGLE_CLOUD_PROJECT
+    name: Google Cloud Project ID
+    required: true
+    sensitive: false
+    value: flora-data
+    description: Default Google Cloud project for BigQuery jobs and dataset discovery.
+  - key: GOOGLE_APPLICATION_CREDENTIALS
+    name: Google Application Credentials
+    required: true
+    sensitive: true
+    description: Shared BigQuery service account JSON credentials file.
+    file: true
+    secretBinding:
+      name: obot-mcp-shared-secrets
+      key: bigquery-service-account-json
+  - key: BIGQUERY_LOCATION
+    name: BigQuery Location
+    required: false
+    sensitive: false
+    value: us-east4
+    description: Default location for Flora BigQuery datasets.
+
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/bigquery-mcp:latest
+  port: 5000
+  path: /mcp
+
+toolPreview:
+  - name: query
+    description: Execute Standard SQL queries against BigQuery datasets in the flora-data project.
+    params:
+      sql: Standard SQL query. Use fully-qualified table names like `flora-data.dataset.table`.
