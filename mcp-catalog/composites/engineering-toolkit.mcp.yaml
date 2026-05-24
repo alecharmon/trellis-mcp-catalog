@@ -1,5 +1,5 @@
 name: Engineering Toolkit
-shortDescription: Composite engineering toolkit with code, observability, deploy, data, and issue tools
+shortDescription: Composite engineering toolkit with observability, product analytics, and issue tools
 description: |
   Composite MCP server for common engineering workflows.
 
@@ -11,7 +11,8 @@ description: |
   which means Obot does not apply an allowlist or disable any tools.
 
   Shared Sentry, Axiom, and PostHog credentials are injected through Kubernetes
-  Secret bindings and should not be requested from individual users.
+  Secret bindings and should not be requested from individual users. Vercel is
+  kept standalone because its OAuth flow can block composite tool discovery.
 
 metadata:
   categories: Developer Tools
@@ -25,9 +26,6 @@ compositeConfig:
       toolOverrides: []
     - catalogEntryID: default-axiom-5963466f
       toolPrefix: axiom_
-      toolOverrides: []
-    - catalogEntryID: default-vercel-920aa84e
-      toolPrefix: vercel_
       toolOverrides: []
     - catalogEntryID: default-posthog-db7c40d9
       toolPrefix: posthog_
