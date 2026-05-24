@@ -1,12 +1,14 @@
 name: Sentry
 shortDescription: Debug Sentry issues, errors, traces, and project telemetry
 description: |
-  Remote Sentry MCP server exposed through Trellis/Obot.
+  Sentry MCP server exposed through Trellis/Obot via a local stdio server.
 
   Use this server for production debugging, issue triage, traces, releases,
   project metadata, and Sentry-backed investigations.
 
-  Authentication is handled by Sentry's MCP OAuth flow.
+  Authentication uses a shared Sentry access token from Kubernetes Secret
+  `obot-mcp-shared-secrets`. The server runs the official `@sentry/mcp-server`
+  over stdio with `SENTRY_ACCESS_TOKEN` injected from Secret Manager.
 
 metadata:
   categories: Developer Tools, Observability
@@ -15,6 +17,23 @@ metadata:
 icon: https://unpkg.com/simple-icons@16.21.0/icons/sentry.svg
 repoURL: https://github.com/getsentry/sentry-mcp
 
-runtime: remote
-remoteConfig:
-  fixedURL: https://mcp.sentry.dev/mcp
+env:
+  - key: SENTRY_ACCESS_TOKEN
+    name: Sentry Access Token
+    description: Shared Sentry user auth token for querying Flora Sentry data.
+    required: true
+    sensitive: true
+    secretBinding:
+      name: obot-mcp-shared-secrets
+      key: sentry-access-token
+  - key: SENTRY_HOST
+    name: Sentry Host
+    description: Sentry host for Flora.
+    required: false
+    sensitive: false
+    value: sentry.io
+
+runtime: npx
+npxConfig:
+  package: "@sentry/mcp-server@latest"
+  startupTimeoutSeconds: 120

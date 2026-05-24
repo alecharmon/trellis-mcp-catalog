@@ -29,11 +29,14 @@ provider tools to be hidden until the catalog is updated.
 
 Standalone/base servers do not define tool allowlists in the catalog, so their
 server-provided tools are enabled by default. GitHub and BigQuery are intentionally
-not published because this registry is OAuth-only and those integrations were
-using PAT/service-account credentials. Slack remains published as a standalone
-server only because it requires static OAuth client credentials, which Obot does
-not currently support inside composites.
+not published because this registry is OAuth-first and those integrations were
+using PAT/service-account credentials. Sentry, PostHog, and Axiom use local
+stdio servers with shared env-based secrets because that path is more reliable
+through Obot and composites. Slack remains published as a standalone server only
+because it requires static OAuth client credentials, which Obot does not
+currently support inside composites.
 
 ## Secrets
 
-Do not commit secrets. Configure OAuth or prompted tokens in Obot.
+Do not commit secrets. Shared Sentry/PostHog/Axiom credentials are injected by
+Obot secret bindings from Kubernetes Secret `obot-mcp-shared-secrets`.
