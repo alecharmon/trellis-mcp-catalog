@@ -4,7 +4,8 @@ description: |
   Remote GitHub MCP server exposed through Trellis/Obot.
 
   Use this server for repository inspection, issue/PR workflows, code search,
-  and GitHub automation. Users must provide a GitHub token when connecting.
+  and GitHub automation. Authentication uses the shared Obot GitHub PAT from
+  the Kubernetes `obot-secrets` secret.
 
 metadata:
   categories: Developer Tools, Source Control
@@ -18,8 +19,11 @@ remoteConfig:
   fixedURL: https://api.githubcopilot.com/mcp
   headers:
     - name: GitHub Personal Access Token
-      description: GitHub PAT used as a bearer token for GitHub MCP.
+      description: Shared GitHub PAT used as a bearer token for GitHub MCP.
       key: Authorization
-      required: true
+      required: false
       sensitive: true
       prefix: "Bearer "
+      secretBinding:
+        name: obot-secrets
+        key: GITHUB_AUTH_TOKEN

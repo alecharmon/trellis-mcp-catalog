@@ -23,7 +23,7 @@ remoteConfig:
     - name: PostHog API Key
       description: Shared Flora PostHog API key used as a bearer token.
       key: Authorization
-      required: true
+      required: false
       sensitive: true
       prefix: "Bearer "
       secretBinding:
