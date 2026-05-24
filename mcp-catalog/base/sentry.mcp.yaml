@@ -12,7 +12,7 @@ metadata:
   categories: Developer Tools, Observability
   trellis-id: sentry
 
-icon: https://sentry.io/_assets2/static/favicon.png
+icon: https://unpkg.com/simple-icons@16.21.0/icons/sentry.svg
 repoURL: https://github.com/getsentry/sentry-mcp
 
 runtime: remote
