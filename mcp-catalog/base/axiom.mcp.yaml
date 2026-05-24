@@ -1,13 +1,14 @@
 name: Axiom
 shortDescription: Query Flora logs and telemetry in Axiom
 description: |
-  Remote Axiom MCP server exposed through Trellis/Obot.
+  Axiom MCP server exposed through Trellis/Obot via a local stdio server.
 
   Use this server for production log and trace investigation, especially the
   `flora-core` dataset referenced by flora-frontend runbooks and skills.
 
-  Prefer per-user OAuth if supported by the remote Axiom MCP flow so telemetry
-  access follows user permissions.
+  Authentication uses shared Axiom credentials from Kubernetes Secret
+  `obot-mcp-shared-secrets`. The server runs `mcp-server-axiom` over stdio with
+  `AXIOM_TOKEN` and `AXIOM_ORG_ID` injected from Secret Manager.
 
 metadata:
   categories: Observability, Developer Tools
@@ -16,6 +17,31 @@ metadata:
 icon: https://axiom.co/favicon.ico
 repoURL: https://axiom.co/docs/reference/mcp
 
-runtime: remote
-remoteConfig:
-  fixedURL: https://mcp.axiom.co/mcp
+env:
+  - key: AXIOM_TOKEN
+    name: Axiom API Token
+    description: Shared Axiom API token for querying Flora telemetry.
+    required: true
+    sensitive: true
+    secretBinding:
+      name: obot-mcp-shared-secrets
+      key: axiom-token
+  - key: AXIOM_ORG_ID
+    name: Axiom Organization ID
+    description: Axiom organization ID for Flora.
+    required: true
+    sensitive: true
+    secretBinding:
+      name: obot-mcp-shared-secrets
+      key: axiom-org-id
+  - key: AXIOM_URL
+    name: Axiom API URL
+    description: Axiom API URL.
+    required: false
+    sensitive: false
+    value: https://api.axiom.co
+
+runtime: npx
+npxConfig:
+  package: mcp-server-axiom@latest
+  startupTimeoutSeconds: 120
