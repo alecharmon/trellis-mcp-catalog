@@ -22,6 +22,14 @@ mcp-catalog/composites/  Composite MCP server catalog entries
 - **General**: Linear, Slack, Granola, Notion, Flora.
 - **Engineering Toolkit**: Sentry, GitHub, Axiom, Vercel, PostHog, BigQuery, Linear.
 
+Composite component entries intentionally use `toolOverrides: []`. In Obot, an
+empty override list means all tools from that component server are enabled. Do
+not replace this with an explicit `enabled: true` allowlist unless you want new
+provider tools to be hidden until the catalog is updated.
+
+Standalone/base servers do not define tool allowlists in the catalog, so their
+server-provided tools are enabled by default.
+
 ## Secrets
 
 Do not commit secrets. Configure OAuth or prompted tokens in Obot.

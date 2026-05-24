@@ -3,9 +3,12 @@ shortDescription: Composite engineering toolkit with code, observability, deploy
 description: |
   Composite MCP server for common engineering workflows.
 
-  This exposes selected engineering tools through one Obot MCP server. Tool names
-  are prefixed by component to avoid collisions and make model tool choice easier
-  to audit.
+  This exposes engineering tools through one Obot MCP server. Tool names are
+  prefixed by component to avoid collisions and make model tool choice easier to
+  audit.
+
+  All component tools are enabled. Each component keeps `toolOverrides: []`,
+  which means Obot does not apply an allowlist or disable any tools.
 
 metadata:
   categories: Developer Tools
