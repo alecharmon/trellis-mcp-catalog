@@ -1,0 +1,31 @@
+name: General
+shortDescription: "General company workflow tools: Linear, Slack, Granola, Notion, and Flora"
+description: |
+  Composite MCP server for general company workflows.
+
+  Includes project planning, communication, meetings, docs, and Flora-native
+  workflows. Components are prefixed to make tool origin clear and avoid name
+  collisions.
+
+metadata:
+  categories: Productivity, Collaboration
+  trellis-id: general
+
+runtime: composite
+compositeConfig:
+  componentServers:
+    - catalogEntryID: default-linear-2ad8f8d8
+      toolPrefix: linear_
+      toolOverrides: []
+    - catalogEntryID: default-slack-b73781ab
+      toolPrefix: slack_
+      toolOverrides: []
+    - catalogEntryID: default-granola-8de30437
+      toolPrefix: granola_
+      toolOverrides: []
+    - catalogEntryID: default-notion-ae1c5d40
+      toolPrefix: notion_
+      toolOverrides: []
+    - catalogEntryID: default-flora-1dbed4f5
+      toolPrefix: flora_
+      toolOverrides: []

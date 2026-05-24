@@ -17,11 +17,10 @@ mcp-catalog/base/        Individual MCP server catalog entries
 mcp-catalog/composites/  Composite MCP server catalog entries
 ```
 
-## Catalog contents
+## Current composites
 
-This registry currently publishes individual/base MCP server entries only.
-Composite servers are intentionally not published because several OAuth-based
-remote MCP providers behave better when connected standalone.
+- **General**: Linear, Slack, Granola, Notion, Flora.
+- **Engineering Toolkit**: Sentry, GitHub, Axiom, Vercel, PostHog, BigQuery, Linear.
 
 ## Secrets
 
