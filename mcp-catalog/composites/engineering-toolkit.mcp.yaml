@@ -3,9 +3,9 @@ shortDescription: Composite engineering toolkit with code, observability, deploy
 description: |
   Composite MCP server for common engineering workflows.
 
-  This exposes engineering tools through one Obot MCP server. Tool names are
-  prefixed by component to avoid collisions and make model tool choice easier to
-  audit.
+  This exposes OAuth-backed engineering tools through one Obot MCP server. Tool
+  names are prefixed by component to avoid collisions and make model tool choice
+  easier to audit.
 
   All component tools are enabled. Each component keeps `toolOverrides: []`,
   which means Obot does not apply an allowlist or disable any tools.
@@ -20,9 +20,6 @@ compositeConfig:
     - catalogEntryID: default-sentry-f0fce749
       toolPrefix: sentry_
       toolOverrides: []
-    - catalogEntryID: default-github-391ae5a6
-      toolPrefix: github_
-      toolOverrides: []
     - catalogEntryID: default-axiom-5963466f
       toolPrefix: axiom_
       toolOverrides: []
@@ -31,9 +28,6 @@ compositeConfig:
       toolOverrides: []
     - catalogEntryID: default-posthog-db7c40d9
       toolPrefix: posthog_
-      toolOverrides: []
-    - catalogEntryID: default-bigquery-8917a842
-      toolPrefix: bigquery_
       toolOverrides: []
     - catalogEntryID: default-linear-2ad8f8d8
       toolPrefix: linear_
