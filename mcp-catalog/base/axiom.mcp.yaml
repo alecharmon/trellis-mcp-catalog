@@ -32,13 +32,17 @@ env:
     description: Axiom organization ID for Flora.
     required: true
     sensitive: false
-    value: floraai-cjlw
+    secretBinding:
+      name: obot-mcp-shared-secrets
+      key: axiom-org-id
   - key: AXIOM_URL
     name: Axiom API URL
     description: Axiom API URL.
     required: false
     sensitive: false
-    value: https://api.axiom.co
+    secretBinding:
+      name: obot-mcp-shared-secrets
+      key: axiom-url
 
 runtime: npx
 npxConfig:

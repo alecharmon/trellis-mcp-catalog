@@ -31,7 +31,9 @@ env:
     description: Sentry host for Flora.
     required: false
     sensitive: false
-    value: sentry.io
+    secretBinding:
+      name: obot-mcp-shared-secrets
+      key: sentry-host
 
 runtime: npx
 npxConfig:
