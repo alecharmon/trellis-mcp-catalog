@@ -19,7 +19,7 @@ mcp-catalog/composites/  Composite MCP server catalog entries
 
 ## Current composites
 
-- **General**: Linear, Slack, Granola, Notion, Flora.
+- **General**: Linear, Granola, Notion, Flora.
 - **Engineering Toolkit**: Sentry, Axiom, Vercel, PostHog, Linear.
 
 Composite component entries intentionally use `toolOverrides: []`. In Obot, an
@@ -30,7 +30,9 @@ provider tools to be hidden until the catalog is updated.
 Standalone/base servers do not define tool allowlists in the catalog, so their
 server-provided tools are enabled by default. GitHub and BigQuery are intentionally
 not published because this registry is OAuth-only and those integrations were
-using PAT/service-account credentials.
+using PAT/service-account credentials. Slack remains published as a standalone
+server only because it requires static OAuth client credentials, which Obot does
+not currently support inside composites.
 
 ## Secrets
 

@@ -7,6 +7,9 @@ description: |
   canvases, and messages. Authentication is handled by Slack's MCP OAuth flow so
   access follows the connected user's Slack permissions.
 
+  Slack requires static OAuth client credentials in Obot; it does not support
+  dynamic client registration.
+
 metadata:
   categories: Communication, Productivity
   trellis-id: slack
@@ -17,3 +20,4 @@ repoURL: https://api.slack.com
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.slack.com/mcp
+  staticOAuthRequired: true

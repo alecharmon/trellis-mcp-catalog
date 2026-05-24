@@ -1,11 +1,13 @@
 name: General
-shortDescription: "General company workflow tools: Linear, Slack, Granola, Notion, and Flora"
+shortDescription: "General company workflow tools: Linear, Granola, Notion, and Flora"
 description: |
   Composite MCP server for general company workflows.
 
-  Includes project planning, communication, meetings, docs, and Flora-native
-  workflows. Components are prefixed to make tool origin clear and avoid name
-  collisions.
+  Includes project planning, meetings, docs, and Flora-native workflows.
+  Components are prefixed to make tool origin clear and avoid name collisions.
+
+  Slack is intentionally excluded because Slack MCP requires static OAuth, and
+  Obot does not currently support static-OAuth remote servers inside composites.
 
   All component tools are enabled. Each component keeps `toolOverrides: []`,
   which means Obot does not apply an allowlist or disable any tools.
@@ -19,9 +21,6 @@ compositeConfig:
   componentServers:
     - catalogEntryID: default-linear-2ad8f8d8
       toolPrefix: linear_
-      toolOverrides: []
-    - catalogEntryID: default-slack-b73781ab
-      toolPrefix: slack_
       toolOverrides: []
     - catalogEntryID: default-granola-8de30437
       toolPrefix: granola_
