@@ -6,9 +6,10 @@ description: |
   Use this server for production log and trace investigation, especially the
   `flora-core` dataset referenced by flora-frontend runbooks and skills.
 
-  Authentication uses shared Axiom credentials from Kubernetes Secret
+  Authentication uses a shared Axiom token from Kubernetes Secret
   `obot-mcp-shared-secrets`. The server runs `mcp-server-axiom` over stdio with
-  `AXIOM_TOKEN` and `AXIOM_ORG_ID` injected from Secret Manager.
+  `AXIOM_TOKEN` injected from Secret Manager and `AXIOM_ORG_ID` fixed to
+  `floraai-cjlw`.
 
 metadata:
   categories: Observability, Developer Tools
@@ -30,10 +31,8 @@ env:
     name: Axiom Organization ID
     description: Axiom organization ID for Flora.
     required: true
-    sensitive: true
-    secretBinding:
-      name: obot-mcp-shared-secrets
-      key: axiom-org-id
+    sensitive: false
+    value: floraai-cjlw
   - key: AXIOM_URL
     name: Axiom API URL
     description: Axiom API URL.
