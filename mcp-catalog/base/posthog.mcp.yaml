@@ -15,7 +15,7 @@ metadata:
   categories: Analytics, Developer Tools
   trellis-id: posthog
 
-icon: https://posthog.com/favicon.ico
+icon: https://unpkg.com/simple-icons@16.21.0/icons/posthog.svg
 repoURL: https://posthog.com/docs/model-context-protocol
 
 env:
