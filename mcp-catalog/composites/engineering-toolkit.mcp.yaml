@@ -10,6 +10,9 @@ description: |
   All component tools are enabled. Each component keeps `toolOverrides: []`,
   which means Obot does not apply an allowlist or disable any tools.
 
+  Shared Sentry, Axiom, and PostHog credentials are injected through Kubernetes
+  Secret bindings and should not be requested from individual users.
+
 metadata:
   categories: Developer Tools
   trellis-id: engineering-toolkit
