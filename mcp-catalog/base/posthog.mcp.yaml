@@ -1,15 +1,18 @@
 name: PostHog
 shortDescription: Query PostHog product analytics, events, cohorts, and HogQL
 description: |
-  PostHog MCP server exposed through Trellis/Obot via a local stdio bridge.
+  PostHog MCP server exposed through Trellis/Obot via a direct local stdio MCP
+  server.
 
   Use this server for product analytics, event exploration, funnels, cohorts, and
   HogQL queries. The flora-frontend data skill expects PostHog access to Flora
   Alpha / project id 65357 unless a different project is explicitly requested.
 
-  Authentication uses a shared PostHog API key from Kubernetes Secret
-  `obot-mcp-shared-secrets`. The server runs `mcp-remote` over stdio and passes
-  the API key as an Authorization header to `https://mcp.posthog.com/mcp`.
+  Authentication uses a shared PostHog personal API key from Kubernetes Secret
+  `obot-mcp-shared-secrets`. This entry intentionally avoids the hosted
+  `https://mcp.posthog.com/mcp` + `mcp-remote` bridge because that hosted
+  Streamable HTTP/SSE endpoint has returned intermittent upstream 500s under
+  composite load.
 
 metadata:
   categories: Analytics, Developer Tools
@@ -19,20 +22,30 @@ icon: https://unpkg.com/simple-icons@16.21.0/icons/posthog.svg
 repoURL: https://posthog.com/docs/model-context-protocol
 
 env:
-  - key: POSTHOG_AUTH_HEADER
-    name: PostHog Authorization Header
-    description: Full Authorization header value, e.g. `Bearer phx_...`.
+  - key: POSTHOG_API_KEY
+    name: PostHog Personal API Key
+    description: Shared PostHog personal API key, e.g. `phx_...`.
     required: true
     sensitive: true
     secretBinding:
       name: obot-mcp-shared-secrets
-      key: posthog-api-key
+      key: posthog-api-token
+  - key: POSTHOG_BASE_URL
+    name: PostHog Base URL
+    description: PostHog application/API base URL.
+    required: true
+    secretBinding:
+      name: obot-mcp-shared-secrets
+      key: posthog-base-url
+  - key: POSTHOG_PROJECT_ID
+    name: PostHog Project ID
+    description: Flora Alpha PostHog project ID.
+    required: true
+    secretBinding:
+      name: obot-mcp-shared-secrets
+      key: posthog-project-id
 
 runtime: npx
 npxConfig:
-  package: mcp-remote@latest
-  args:
-    - https://mcp.posthog.com/mcp
-    - --header
-    - Authorization:${POSTHOG_AUTH_HEADER}
+  package: "@arvoretech/posthog-mcp@1.0.1"
   startupTimeoutSeconds: 120
